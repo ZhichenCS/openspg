@@ -61,9 +61,7 @@ def process(
 
     writer = open(tgt_path, "w", encoding="utf-8")
     with open(src_path, "r", encoding="utf-8") as reader:
-        for line in reader:
-            print(line)
-            record = json.loads(line)
+            record = json.load(line)
             if task_type == "RE":
                 prompt_template = get_re_prompt(template_path, spg_type)
                 instruct = prompt_template.replace("${input}", record["input"])
